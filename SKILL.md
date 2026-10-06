@@ -31,13 +31,10 @@ The **engine underneath never changes**: isometric projection, tile ground, floa
 ════════════════════════════════════════
 ## 1. THE REFERENCE TEMPLATES (your starting point — always)
 
-Two proven, self-contained engines ship with this skill. **Pick the one that fits the demo, copy it, then re-theme.** Both share the identical storyboard **card system** (the click-through detail cards) — only the *map* differs.
+Only the isometric 3D engine ships with this public copy of the skill (see "A note on the flat-map engine" below for why).
 
-**A) `reference/` — ISOMETRIC 3D world** (the Contoso Countryside build).
+**`reference/` — ISOMETRIC 3D world** (the reference build).
 A pseudo-3D scene of buildings/props on an iso grid. Great for a "places you travel between" feel (farms, campuses, industrial parks).
-
-**B) `reference-flatmap/` — FLAT ILLUSTRATED top-down CITY MAP** (the Leeds Building Society build).
-A hand-drawn-style aerial map: muted backdrop, **yellow ribbon roads**, a **river**, flat front-elevation buildings, labelled **banner signs**, a **park with playground**, characters (people, cyclist, speech bubbles) and **channel badges**. Great for member/customer-journey stories, city/branch networks, and anything that benefits from charm + a strong sense of place. This is usually the more captivating choice for exec demos.
 
 Each template folder contains:
 ```
@@ -48,9 +45,11 @@ data.js      ← MAP_CONFIG + SCENARIOS + JOURNEY (REPLACE with new content)
 logos/       ← brand + tech-stack assets (SWAP per customer)
 ```
 
-In the flat-map engine, `MAP_CONFIG.buildings` entries use **`pos:[x,y]`** pixel coordinates on a 1600×1040 canvas, a **`kind`** (hq | shop | office | home | care | backoffice) and a **`channel`** badge; `app.js` PART A holds the illustration primitives (`drawBuilding`, `person`, `tree`, playground kit, `bubble`, `drawSign`, roads, river, park). In the isometric engine, entries use `tile:[col,row]` + `crop` + `kind`.
+Entries in `MAP_CONFIG.farms` use `tile:[col,row]` + `crop` + `kind`.
 
 **Always build by copying the chosen template to the new output folder, then editing** — never hand-write the engine from scratch. Read the reference files at runtime for exact current code; this document explains *what* to change, the files are the source of truth for *how*.
+
+> **A note on the flat-map engine.** An earlier version of this skill also shipped a second engine — a flat, illustrated top-down city-map style (muted backdrop, ribbon roads, a river, flat front-elevation buildings, banner signs, people/speech-bubble vignettes, channel badges) — great for member/customer-journey stories and branch networks. That reference build was removed from this public copy because its sample content was built directly from a real customer engagement and is not appropriate to publish. If you want to recreate a flat-map engine for your own demo, build it from scratch following the same principles in §2 (fixed engine vs. re-themed layers), using `reference/` as your structural model for the card system and workflow, but drawing a flat top-down city/branch scene instead of an isometric one.
 
 ════════════════════════════════════════
 ## 2. WHAT'S FIXED vs WHAT YOU RE-THEME
@@ -83,7 +82,7 @@ This is the craft. Regenerate:
 - A `person(parent, cx, cy, opts)` primitive (iso figure; opts for `phone`, `headset`, `body`/`hair` colour) and a `bench()`.
 - A screen-space `bubble(parent, sx, sy, glyphKind, label, tone)` speech bubble + a `miniGlyph()` set of tiny channel icons (chat/branch/omni/app/care/copilot…).
 - A `CHANNELS` map + `channelBadge(cx,cy,key)` pinned to each node's plot, driven by a `channel:` field on each `MAP_CONFIG` entry — so every scenario shows the channel the member is reaching out on.
-- A few depth-sorted **vignette objects** (person + bubble) placed in open space to dramatise the live moments (member on phone in the park, colleague with headset, someone at a branch appointment). Keep bubbles clear of the floating node signs. The Leeds Building Society build is the worked example of this layer.
+- A few depth-sorted **vignette objects** (person + bubble) placed in open space to dramatise the live moments (member on phone in the park, colleague with headset, someone at a branch appointment). Keep bubbles clear of the floating node signs.
 
 Build every new prop from `isoBox`/`gableRoof`/`silo`/`tree`/polygons so depth-sorting and the iso look stay consistent. Draw back-to-front (higher `col+row` last).
 
@@ -97,14 +96,14 @@ Build every new prop from `isoBox`/`gableRoof`/`silo`/`tree`/polygons so depth-s
 **Step 2 — Discovery interview (use `m_ask_user`).** Get, crisply:
 1. **Subject & industry** of the demo, and the **customer name** (+ any partner).
 2. **The scenarios** — the list of use cases / demo beats. Ideally a briefing doc, deck, or bullet list. Each becomes one node. (Read files via `workspace_*`/WorkIQ if referenced.)
-3. **World metaphor + visual engine** — propose the best-fit metaphor from §0's table and 1–2 alternatives; AND pick the engine: **flat illustrated city-map** (`reference-flatmap/`, usually the more captivating, best for journey/branch/customer stories) or **isometric 3D** (`reference/`, best for "places you travel between"). Let them choose or say "you choose".
+3. **World metaphor** — propose the best-fit metaphor from §0's table and 1–2 alternatives, and confirm it with the user. This public copy of the skill ships the isometric 3D engine (`reference/`, best for "places you travel between").
 4. **Brand & logos** — customer logo, partner logo, and which **Microsoft products** feature (drives the tech-stack lockup + solution-component tiles). Ask for logo files or fetch/sample; else reuse `reference/logos` where products match.
 5. **Journey strip** — the short left-to-right "rep/user journey" phrases across the top (optional; can derive from scenarios).
 6. **Grounding rule** — confirm which facts are real vs illustrative; tag illustrative content "[Placeholder]" exactly as the reference does.
 
 Confirm **metaphor + palette + scenario count** back in one line before building.
 
-**Step 3 — Scaffold.** Create the output folder (default: a sibling of the current workspace named `"<Customer> <Metaphor> Demo"`, e.g. `Contoso City Demo`). Copy **the chosen reference template** (`reference-flatmap/` or `reference/`) into it. Confirm the path with the user if unsure.
+**Step 3 — Scaffold.** Create the output folder (default: a sibling of the current workspace named `"<Customer> <Metaphor> Demo"`, e.g. `Contoso City Demo`). Copy **the `reference/` template** into it. Confirm the path with the user if unsure.
 
 **Step 4 — Re-theme** the three layers (§2b–2d): palette → props → content. Do content (`data.js`) fully first (fastest visible value), then palette, then the prop shapes.
 

@@ -8,9 +8,8 @@ Every build is a single folder of static files — **no backend, no build step, 
 
 - **`SKILL.md`** — the full authoring guide: how to choose a world metaphor for the industry, what's fixed in the engine vs. what to re-theme, the workflow, and the content schema.
 - **`reference/`** — the isometric 3D "world" engine (countryside/campus/industrial-park style), reference quality bar.
-- **`reference-flatmap/`** — the flat, illustrated top-down city-map engine (branch/high-street/journey style).
 
-Each reference folder contains:
+The `reference/` folder contains:
 
 ```
 index.html   page structure + storyboard card markup
@@ -24,10 +23,9 @@ logos/       Microsoft product icons used by the solution-component tiles
 
 ## How to use
 
-1. Pick the reference engine that fits your story (isometric `reference/` for "places you travel between"; `reference-flatmap/` for journey/branch/customer stories).
-2. Copy the chosen folder to a new output folder.
-3. Re-theme the palette (`styles.css :root`), the world props (`app.js`), and the content (`data.js`) following the guide in `SKILL.md`.
-4. Open `index.html` directly in a browser — no build step required.
+1. Copy the `reference/` folder to a new output folder.
+2. Re-theme the palette (`styles.css :root`), the world props (`app.js`), and the content (`data.js`) following the guide in `SKILL.md`.
+3. Open `index.html` directly in a browser — no build step required.
 
 See `SKILL.md` for the complete authoring workflow, content schema, and quality bar.
 
@@ -40,11 +38,10 @@ This repo is packaged as a [Microsoft Scout](https://aka.ms/microsoft-scout) ski
    - Windows: `%USERPROFILE%\.scout\m-skills\demo-hub\`
    - macOS/Linux: `~/.scout/m-skills/demo-hub/`
 
-   The folder must contain `SKILL.md` directly inside it (alongside `reference/` and `reference-flatmap/`), for example:
+   The folder must contain `SKILL.md` directly inside it (alongside `reference/`), for example:
    ```
    ~/.scout/m-skills/demo-hub/SKILL.md
    ~/.scout/m-skills/demo-hub/reference/...
-   ~/.scout/m-skills/demo-hub/reference-flatmap/...
    ```
 3. Restart Scout (or start a new session). The skill will appear in Scout's skill list as **demo-hub**.
 4. In chat, just ask Scout to build you a demo hub — e.g. *"build me a demo hub for [customer/industry]"* — and Scout will load `SKILL.md`, interview you for the scenarios/branding, and generate the finished interactive demo.
@@ -53,7 +50,9 @@ This repo is packaged as a [Microsoft Scout](https://aka.ms/microsoft-scout) ski
 
 ## Screenshots
 
-<!-- screenshots added below -->
+**Isometric 3D world engine** (`reference/`):
+
+![Isometric demo hub overview](docs/screenshots/isometric-overview.png)
 
 ## License
 
