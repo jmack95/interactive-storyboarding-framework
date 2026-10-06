@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- ============================================================================
-     Kwizda Countryside Demo Hub
+     Contoso Countryside Demo Hub
      Single-page interactive isometric countryside map for a Dynamics 365 Sales
      + Microsoft AI executive demo. Open this file directly in Microsoft Edge.
 
@@ -16,7 +16,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kwizda Countryside Demo Hub</title>
+  <title>Contoso Countryside Demo Hub</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -34,16 +34,13 @@
           <span class="ms-square ms-square--r"></span><span class="ms-square ms-square--g"></span>
           <span class="ms-square ms-square--b"></span><span class="ms-square ms-square--y"></span>
         </span>
-        <!-- Customer + partner logos, presented as clean white badge chips so
-             they sit naturally in the header. Swap the files in /logos to
-             rebrand: kwizda.png (customer) and orbis.webp (partner). -->
-        <span class="brand__divider" aria-hidden="true"></span>
-        <span class="brandchip brandchip--kwizda">
-          <img src="logos/kwizda.png" alt="Kwizda" />
-        </span>
-        <span class="brandchip brandchip--orbis">
-          <img src="logos/orbis.png" alt="ORBIS" />
-        </span>
+        <!-- Customer + partner logos go here as clean white badge chips so
+             they sit naturally in the header. Add your own logo files under
+             /logos and a brandchip span per logo when rebranding this demo,
+             e.g.:
+             <span class="brandchip brandchip--customer">
+               <img src="logos/customer.png" alt="Customer" />
+             </span> -->
       </div>
 
       <!-- The seven-step rep journey (filled from data.js REP_JOURNEY) -->
@@ -71,7 +68,7 @@
 
     <!-- Footer note: provenance + placeholder disclaimer -->
     <footer class="mapfoot">
-      <span>Built from the Kwizda Agro CRM Demo briefing (Use Cases 1–5).</span>
+      <span>Sample CRM demo briefing (Use Cases 1–5).</span>
       <span class="mapfoot__sep">·</span>
       <span>Farmer names, figures and product names are illustrative placeholders.</span>
     </footer>

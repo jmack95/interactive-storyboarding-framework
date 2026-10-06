@@ -1,5 +1,5 @@
 /* =============================================================================
-   Kwizda Countryside Demo Hub — STYLES
+   Contoso Countryside Demo Hub — STYLES
    -----------------------------------------------------------------------------
    REBRAND / RECOLOUR HERE: every colour is a CSS variable in :root below.
    The palette blends Microsoft brand blues with agricultural greens and warm
@@ -134,9 +134,9 @@ html, body {
   flex: 0 0 auto;
 }
 .brandchip img { display: block; width: auto; object-fit: contain; }
-/* tuned per logo so the optical sizes match */
-.brandchip--kwizda img { height: 24px; }
-.brandchip--orbis  img { height: 26px; }
+/* tuned per logo so the optical sizes match; add one rule per brandchip you use */
+.brandchip--customer img { height: 24px; }
+.brandchip--partner  img { height: 26px; }
 
 /* --- Rep journey strip --- */
 .journey {

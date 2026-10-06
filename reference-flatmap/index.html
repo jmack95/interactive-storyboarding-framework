@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <!-- ============================================================================
-     Kwizda Countryside Demo Hub
-     Single-page interactive isometric countryside map for a Dynamics 365 Sales
-     + Microsoft AI executive demo. Open this file directly in Microsoft Edge.
+     Leeds Building Society — High Street Demo Hub
+     Single-page interactive flat illustrated city-map demo for a Dynamics 365
+     Customer Service + Microsoft AI executive demo. Open this file directly
+     in Microsoft Edge.
 
      Files:
        index.html  – this page structure
        styles.css  – all styling + colour variables (edit colours at the top)
-       data.js     – farm positions + all scenario card content (edit content here)
-       app.js      – builds the isometric scene and handles navigation
+       data.js     – building positions + all scenario card content (edit content here)
+       app.js      – builds the flat map scene and handles navigation
 
      No backend, no build step, no internet required. Just double-click to open.
      ========================================================================= -->
@@ -34,13 +35,13 @@
           <span class="ms-square ms-square--r"></span><span class="ms-square ms-square--g"></span>
           <span class="ms-square ms-square--b"></span><span class="ms-square ms-square--y"></span>
         </span>
-        <!-- Customer + partner logos, presented as clean white badge chips so
-             they sit naturally in the header. Swap the files in /logos to
-             rebrand: kwizda.png (customer) and orbis.webp (partner). -->
-        <span class="brand__divider" aria-hidden="true"></span>
-        <span class="brandchip brandchip--leeds">
-          <img src="logos/leeds.svg" alt="Leeds Building Society" />
-        </span>
+        <!-- Customer + partner logos go here as clean white badge chips so
+             they sit naturally in the header. Add your own logo files under
+             /logos and a brandchip span per logo when rebranding this demo,
+             e.g.:
+             <span class="brandchip brandchip--customer">
+               <img src="logos/customer.svg" alt="Customer" />
+             </span> -->
       </div>
 
       <!-- The seven-step rep journey (filled from data.js REP_JOURNEY) -->

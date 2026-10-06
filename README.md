@@ -31,6 +31,30 @@ logos/       Microsoft product icons used by the solution-component tiles
 
 See `SKILL.md` for the complete authoring workflow, content schema, and quality bar.
 
+## Set up as a Microsoft Scout skill
+
+This repo is packaged as a [Microsoft Scout](https://aka.ms/microsoft-scout) skill, so Scout can drive the whole build for you (metaphor selection, content, re-theming, verification) instead of you hand-editing the files.
+
+1. Clone or download this repo.
+2. Copy the entire repo contents into a new folder named `demo-hub` under your local Scout skills directory:
+   - Windows: `%USERPROFILE%\.scout\m-skills\demo-hub\`
+   - macOS/Linux: `~/.scout/m-skills/demo-hub/`
+
+   The folder must contain `SKILL.md` directly inside it (alongside `reference/` and `reference-flatmap/`), for example:
+   ```
+   ~/.scout/m-skills/demo-hub/SKILL.md
+   ~/.scout/m-skills/demo-hub/reference/...
+   ~/.scout/m-skills/demo-hub/reference-flatmap/...
+   ```
+3. Restart Scout (or start a new session). The skill will appear in Scout's skill list as **demo-hub**.
+4. In chat, just ask Scout to build you a demo hub — e.g. *"build me a demo hub for [customer/industry]"* — and Scout will load `SKILL.md`, interview you for the scenarios/branding, and generate the finished interactive demo.
+
+> Tip: you can rename the local folder to anything — Scout matches skills by the `name` field in `SKILL.md`'s front matter, not the folder name — but `demo-hub` is the conventional name used throughout the instructions above.
+
+## Screenshots
+
+<!-- screenshots added below -->
+
 ## License
 
 No license has been specified yet — all rights reserved by the author unless/until a license is added.

@@ -1,5 +1,5 @@
 /* =============================================================================
-   Kwizda Countryside Demo Hub — APP
+   Contoso Countryside Demo Hub — APP
    -----------------------------------------------------------------------------
    Builds the isometric countryside scene as SVG and wires up navigation.
    You normally edit CONTENT in data.js and COLOURS in styles.css — not here.
@@ -464,7 +464,7 @@
     accelerator:
       '<svg viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="#6b3fa0"/>' +
       '<path d="M12.5 5l-5 8h3.3l-1.3 6 5.5-8.4h-3.4L12.5 5Z" fill="#fff"/></svg>',
-    orbis:
+    fieldops:
       '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2" fill="#ef7d22"/>' +
       '<rect x="13" y="3" width="8" height="8" rx="2" fill="#f6b27a"/>' +
       '<rect x="3" y="13" width="8" height="8" rx="2" fill="#f6b27a"/>' +
@@ -519,7 +519,7 @@
     if (t.includes("research agent")) return ICONS.research;
     if (t.includes("copilot")) return ICONS.copilot;
     if (t.includes("power bi")) return ICONS.powerbi;
-    if (t.includes("orbis")) return ICONS.orbis;
+    if (t.includes("fieldops")) return ICONS.fieldops;
     if (t.includes("business process") || t.includes("process flow")) return ICONS.bpf;
     if (t.includes("mcp") || t.includes("model context protocol")) return ICONS.mcp;
     if (t.includes("accelerator") || t.includes("sequence")) return ICONS.accelerator;

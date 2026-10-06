@@ -1,12 +1,12 @@
 /* =============================================================================
-   Kwizda Countryside Demo Hub — DATA
+   Contoso Countryside Demo Hub — DATA
    -----------------------------------------------------------------------------
    THIS FILE IS THE EASIEST PLACE TO EDIT THE DEMO.
    Everything the user sees (farm names, labels, scenario story content, and
    where each farm sits on the map) is defined here. You normally won't need to
    touch app.js or styles.css to change content.
 
-   Source of truth: "Kwizda Agro – CRM Demo, Consolidated Use-Case Briefing"
+   Source of truth: "Contoso Agro – CRM Demo, Consolidated Use-Case Briefing"
    (Use Cases UC1–UC5). Items grounded in that document are real; anything that
    is an illustrative stand-in (farmer names, hectares, product names, discount
    thresholds, account counts) is explicitly marked "[Placeholder]".
@@ -83,11 +83,11 @@ const SCENARIOS = [
     number: 1,
     name: "Navigating Dynamics 365 Sales",
     sign: "Navigating Dynamics 365 Sales",
-    farmer: "The everyday workspace for every Kwizda sales rep",
+    farmer: "The everyday workspace for every Contoso sales rep",
     useCase: "Demo introduction · navigation & user experience",
     keyMessage: {
       headline:
-        "An introduction to navigating Dynamics 365 Sales — the everyday workspace where every Kwizda sales rep finds, understands and acts on their farmers.",
+        "An introduction to navigating Dynamics 365 Sales — the everyday workspace where every Contoso sales rep finds, understands and acts on their farmers.",
       points: [
         "One home for every farmer — accounts, contacts, activities and history together in a single, familiar workspace.",
         "Everything is connected: leads, opportunities, quotes and visits all link back to the same farmer record, with nothing re-keyed.",
@@ -157,9 +157,9 @@ const SCENARIOS = [
     // problem:
     //   "Reps lose preparation time navigating CRM manually and it is unclear whom to prioritise. Management needs scalable, data-based steering of visit frequency across the region.",
     // solution:
-    //   "Conversational CRM through Copilot returns a Dynamics-style prioritised list; ORBIS classification derives visit frequency; a single visit-prep screen answers what I know, what's missing, which products are relevant and what to raise.",
+    //   "Conversational CRM through Copilot returns a Dynamics-style prioritised list; FieldOps classification derives visit frequency; a single visit-prep screen answers what I know, what's missing, which products are relevant and what to raise.",
     // Sequence supports plain strings OR { title, text } for the road nodes.
-    // Framed as the value the Kwizda team gets at each step (not presenter clicks).
+    // Framed as the value the Contoso team gets at each step (not presenter clicks).
     sequence: [
       { title: "Ask Copilot for your priorities", text: "Open a dialog with Microsoft 365 Copilot and ask for your prioritised accounts — your whole book of business, ranked by value, in one natural-language question." },
       { title: "See this week's planned visits", text: "From that list, view all the planned visits for these accounts this week, so the week is mapped out at a glance instead of pieced together by hand." },
@@ -188,7 +188,7 @@ const SCENARIOS = [
       headline:
         "This use case shows how Sales Managers can steer direct and indirect sales activities from one central cockpit.",
       points: [
-        "By combining Sales Accelerator automation, Sales Sequences and rule-based task assignment with ORBIS Strategic Visit Planning, the system helps translate customer classification and scoring into structured visit rhythms, automated visit suggestions and transparent team execution tracking.",
+        "By combining Sales Accelerator automation, Sales Sequences and rule-based task assignment with FieldOps Strategic Visit Planning, the system helps translate customer classification and scoring into structured visit rhythms, automated visit suggestions and transparent team execution tracking.",
       ],
     },
     items: [
@@ -196,9 +196,9 @@ const SCENARIOS = [
       "Sales Accelerator",
       "Sales Sequences",
       "Power BI",
-      "ORBIS Strategic Visit Planning",
-      "ORBIS Classification and Scoring",
-      "ORBIS Scheduler",
+      "FieldOps Strategic Visit Planning",
+      "FieldOps Classification and Scoring",
+      "FieldOps Scheduler",
       "PCF Controls",
     ],
     sequence: [
@@ -319,7 +319,7 @@ const SCENARIOS = [
 ];
 
 /* The benefit strip shown in the header — one pill per core demo scenario.
-   Outcome-led wording tuned for Kwizda stakeholders. Arrows are added
+   Outcome-led wording tuned for Contoso stakeholders. Arrows are added
    automatically between items. Edit these to re-label the strip. */
 const REP_JOURNEY = [
   "Plan visits effortlessly",          // Flow until Visit
