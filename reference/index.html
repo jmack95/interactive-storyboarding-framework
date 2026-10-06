@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- ============================================================================
+     Kwizda Countryside Demo Hub
+     Single-page interactive isometric countryside map for a Dynamics 365 Sales
+     + Microsoft AI executive demo. Open this file directly in Microsoft Edge.
+
+     Files:
+       index.html  – this page structure
+       styles.css  – all styling + colour variables (edit colours at the top)
+       data.js     – farm positions + all scenario card content (edit content here)
+       app.js      – builds the isometric scene and handles navigation
+
+     No backend, no build step, no internet required. Just double-click to open.
+     ========================================================================= -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kwizda Countryside Demo Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- =====================================================================
+       VIEW 1 — THE COUNTRYSIDE MAP
+       ===================================================================== -->
+  <main id="mapView" class="view view--map is-active">
+
+    <!-- Top bar: branding + the rep journey strip -->
+    <header class="topbar">
+      <div class="topbar__brand">
+        <span class="topbar__logo" aria-hidden="true">
+          <!-- Simple four-square Microsoft-style mark -->
+          <span class="ms-square ms-square--r"></span><span class="ms-square ms-square--g"></span>
+          <span class="ms-square ms-square--b"></span><span class="ms-square ms-square--y"></span>
+        </span>
+        <!-- Customer + partner logos, presented as clean white badge chips so
+             they sit naturally in the header. Swap the files in /logos to
+             rebrand: kwizda.png (customer) and orbis.webp (partner). -->
+        <span class="brand__divider" aria-hidden="true"></span>
+        <span class="brandchip brandchip--kwizda">
+          <img src="logos/kwizda.png" alt="Kwizda" />
+        </span>
+        <span class="brandchip brandchip--orbis">
+          <img src="logos/orbis.png" alt="ORBIS" />
+        </span>
+      </div>
+
+      <!-- The seven-step rep journey (filled from data.js REP_JOURNEY) -->
+      <nav class="journey" id="journeyStrip" aria-label="Sales rep journey"></nav>
+    </header>
+
+    <!-- The isometric scene is injected here by app.js -->
+    <div class="stage" id="stage">
+      <div class="stage__hint" id="stageHint">Hover a farm, then click to open its scenario card</div>
+
+      <!-- Microsoft technology stack used across the demo, pinned bottom-right.
+           Add/remove a logo by editing this list (files live in /logos). -->
+      <div class="techstack" aria-label="Microsoft technologies used in this demo">
+        <span class="techstack__label">Powered by</span>
+        <span class="techstack__logos">
+          <span class="techlogo" title="Microsoft 365 Copilot"><img src="logos/copilot.png" alt="Microsoft 365 Copilot" /></span>
+          <span class="techlogo" title="Dynamics 365 Sales"><img src="logos/dynamics.svg" alt="Dynamics 365" /></span>
+          <span class="techlogo" title="Microsoft Power Apps"><img src="logos/powerapps.svg" alt="Power Apps" /></span>
+          <span class="techlogo" title="Microsoft Power Automate"><img src="logos/powerautomate.svg" alt="Power Automate" /></span>
+          <span class="techlogo" title="Microsoft Power BI"><img src="logos/powerbi.svg" alt="Power BI" /></span>
+          <span class="techlogo" title="Microsoft Teams"><img src="logos/teams.svg" alt="Microsoft Teams" /></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Footer note: provenance + placeholder disclaimer -->
+    <footer class="mapfoot">
+      <span>Built from the Kwizda Agro CRM Demo briefing (Use Cases 1–5).</span>
+      <span class="mapfoot__sep">·</span>
+      <span>Farmer names, figures and product names are illustrative placeholders.</span>
+    </footer>
+  </main>
+
+  <!-- =====================================================================
+       VIEW 2 — THE SCENARIO STORYBOARD CARD
+       Hidden until a farm is clicked; populated by app.js.
+       ===================================================================== -->
+  <section id="detailView" class="view view--detail" aria-hidden="true">
+    <div class="card" id="cardRoot">
+
+      <!-- Card header -->
+      <div class="card__head">
+        <button class="backbtn" id="backBtn" type="button">
+          <span class="backbtn__arrow" aria-hidden="true">←</span> Back to countryside
+        </button>
+        <div class="card__badge" id="cardBadge">Scenario 0</div>
+      </div>
+
+      <!-- Card hero -->
+      <div class="card__hero">
+        <div class="card__heroicon" id="cardHeroIcon" aria-hidden="true"></div>
+        <div class="card__herotext">
+          <h2 class="card__title" id="cardTitle">Scenario title</h2>
+          <p class="card__farmer" id="cardFarmer">Farm name</p>
+          <p class="card__usecase" id="cardUseCase">Use case</p>
+          <!-- Optional key-detail chips, rendered by app.js from a scenario's
+               heroFacts array (e.g. farm size, crops, credit limit). -->
+          <div class="card__meta" id="cardMeta"></div>
+        </div>
+      </div>
+
+      <!-- Card body: a responsive grid of labelled blocks.
+           Each block has an id so app.js can hide it when a scenario omits that
+           field in data.js (e.g. Scenario 1 shows only key message, components
+           and the sequence). -->
+      <div class="card__grid">
+
+        <!-- Key demo message: highlighted callout (only shown if the scenario
+             defines keyMessage in data.js) -->
+        <div class="block block--wide block--keymsg" id="blockKeyMsg">
+          <h3 class="block__label">Key demo message</h3>
+          <div id="cKeyMsg"></div>
+        </div>
+
+        <!-- Solution components: rendered as logo tiles by app.js -->
+        <div class="block block--wide" id="blockItems">
+          <h3 class="block__label">Solution components</h3>
+          <ul id="cItems" class="itemgrid"></ul>
+        </div>
+
+        <div class="block block--wide" id="blockSummary">
+          <h3 class="block__label">Business summary</h3>
+          <p id="cSummary"></p>
+        </div>
+
+        <div class="block block--wide" id="blockContext">
+          <h3 class="block__label">Customer / farmer context</h3>
+          <p id="cContext"></p>
+          <!-- Optional structured profile facts (key/value), rendered by app.js
+               from a scenario's contextFacts array. Hidden if none provided. -->
+          <dl id="cContextFacts" class="facts"></dl>
+        </div>
+
+        <div class="block block--problem" id="blockProblem">
+          <h3 class="block__label">Key business problem</h3>
+          <p id="cProblem"></p>
+        </div>
+
+        <div class="block block--solution" id="blockSolution">
+          <h3 class="block__label">Microsoft solution demonstrated</h3>
+          <p id="cSolution"></p>
+        </div>
+
+        <div class="block block--outcome" id="blockOutcome">
+          <h3 class="block__label">Expected business outcome</h3>
+          <p id="cOutcome"></p>
+        </div>
+
+        <!-- Sequence of demo actions: rendered as a winding country road -->
+        <div class="block block--wide" id="blockSequence">
+          <h3 class="block__label">Sequence of demo actions</h3>
+          <div id="cSequence" class="road"></div>
+        </div>
+      </div>
+
+      <!-- Card footer: previous / next navigation between farms -->
+      <div class="card__foot">
+        <button class="navbtn" id="prevBtn" type="button">‹ Previous farm</button>
+        <button class="navbtn navbtn--ghost" id="backBtn2" type="button">Countryside map</button>
+        <button class="navbtn" id="nextBtn" type="button">Next farm ›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- data first, then the app logic -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
